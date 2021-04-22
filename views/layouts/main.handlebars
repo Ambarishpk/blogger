@@ -14,8 +14,8 @@
     <title>Blogger</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light p-4 bg-light">
+<body style="background-color: #F6F8FA;">
+    <nav class="navbar navbar-expand-lg navbar-light p-4 bg-white">
         <a class="navbar-brand text-dark" href="#">Blogger</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
                         <a class="nav-link text-dark" href="#profile"><i class="fas fa-user"></i> {{username}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a class="nav-link text-dark" href="/home"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </li>
                     {{/if}}
                     {{#unless loginStatus}}
@@ -73,7 +73,7 @@
                         <a class="nav-link text-dark" href="/signup"><i class="fas fa-user-plus"></i> Signup</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+                        <a class="nav-link text-dark" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </li>
                     {{/unless}}
                 </ul>

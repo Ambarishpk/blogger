@@ -12,8 +12,7 @@ router.get('/signup', async (req, res) => {
 // BLOGGER SIGNIN
 router.get('/login', async (req, res) => {
     res.render('bloggerLogin', {
-        loginStatus: "true",
-        username: "Ambarish"
+        loginStatus: false,
     })
 })
 
@@ -21,6 +20,7 @@ router.get('/login', async (req, res) => {
 router.get('/authenticate', async (req, res) => {
     res.render('home', {
         loginStatus: true,
+        message: "Logged in successfully",
         username: "Ambarish"
     })
 })
@@ -28,7 +28,7 @@ router.get('/authenticate', async (req, res) => {
 // HOME
 router.get('/home', async (req, res) => {
     res.render('home', {
-        message: "Home Page - this message is coming from backend",
+        message: "Home Page",
         loginStatus: false,
     })
 })
@@ -36,7 +36,7 @@ router.get('/home', async (req, res) => {
 
 router.get('/blogs', async (req, res) => {
     res.render('blogs', {
-        message: "Blog Page - message from backend",
+        blog: "Blog Page",
     })
 })
 
@@ -76,7 +76,8 @@ router.post("/addUser", (req, res) => {
         user.save((err, data) => {
             if (!err) {
                 res.render('bloggerRegistration', {
-                    status: "data is stored successfully"
+                    addStatus: true,
+                    addStatusMessage: "data is stored successfully"
                 })
             }
             else { res.send(err) }

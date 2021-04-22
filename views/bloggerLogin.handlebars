@@ -1,0 +1,28 @@
+<div class="container p-3 mt-2">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col col-6">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> You should check in on some of those fields below.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/loginUser" method="POST">
+                <div class="mb-3">
+                    <label class="col-form-label">Username or Email:</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label">Password:</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary btn-success" value="Login">
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+</div>

@@ -2,33 +2,29 @@
     <div class="row">
         <div class="col"></div>
         <div class="col col-6">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Success!</strong> You should check in on some of those fields below.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <div class="alert alert-warning alert-dismissible fade show" id="alertBox" role="alert">
+                <strong>Success!</strong> {{{reg-status}}}
+                <button type="button" class="close" data-dismiss="alert" onclick="closeAlert()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="/addUser" method="POST">
                 <div class="mb-3">
-                    <label class="col-form-label">Blogger Name:</label>
+                    <label class="col-form-label">Name:</label>
                     <input type="text" name="name" class="form-control" id="full-name">
                 </div>
                 <div class="mb-3">
                     <label class="col-form-label">Email:</label>
-                    <input type="number" name="age" class="form-control" id="email">
+                    <input type="number" name="email" class="form-control" id="email">
                 </div>
                 <div class="mb-3">
-                    <label class="col-form-label">Choose User name:</label>
-                    <input type="number" name="mobile" class="form-control" id="recipient-name">
-                </div>
-                {{!--<div class="mb-3">
-                    <label class="col-form-label">Create Password:</label>
-                    <input type="password" class="form-control" id="new_pass">
+                    <label class="col-form-label">Enter Password:</label>
+                    <input type="password" name="mobile" class="form-control" id="recipient-name">
                 </div>
                 <div class="mb-3">
                     <label class="col-form-label">Confirm Password:</label>
-                    <input type="password" class="form-control" id="con_pass">
-                </div> --}}
+                    <input type="number" name="password" class="form-control" id="recipient-name">
+                </div>
                 <div class="mb-3">
                     <input type="submit" class="btn btn-primary btn-success" value="Submit">
                 </div>
@@ -38,3 +34,11 @@
     </div>
 
 </div>
+
+
+<script>
+
+    function closeAlert() {
+        document.getElementById("alertBox").style.display = "none";
+    }
+</script>

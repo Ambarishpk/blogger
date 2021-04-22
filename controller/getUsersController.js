@@ -1,27 +1,42 @@
 const express = require('express')
 const router = express.Router()
-//const ObjectID = require('mongoose').Types.ObjectId
-
 var { User } = require('../models/Users');
-const { path, response } = require('../server');
 
-
-
+// BLOGGER SIGNUP
 router.get('/signup', async (req, res) => {
     res.render('bloggerRegistration', {
         message: "message from backend"
     })
 })
-router.get('/home', async (req, res) => {
-    res.render('home', {
-        message: "Home Page - this message is coming from backend"
+
+// BLOGGER SIGNIN
+router.get('/login', async (req, res) => {
+    res.render('bloggerLogin', {
+        loginStatus: "true",
+        username: "Ambarish"
     })
 })
 
-router.get('/link', async (req, res) => {
-    res.render('link', {
-        message: "Link Page - message from backend",
-        myName:"Ambarish"
+// SUCCESSFUl LOGIN
+router.get('/authenticate', async (req, res) => {
+    res.render('home', {
+        loginStatus: true,
+        username: "Ambarish"
+    })
+})
+
+// HOME
+router.get('/home', async (req, res) => {
+    res.render('home', {
+        message: "Home Page - this message is coming from backend",
+        loginStatus: false,
+    })
+})
+
+
+router.get('/blogs', async (req, res) => {
+    res.render('blogs', {
+        message: "Blog Page - message from backend",
     })
 })
 

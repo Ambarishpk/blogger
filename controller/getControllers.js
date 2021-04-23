@@ -1,33 +1,54 @@
 const express = require('express')
 const router = express.Router()
-//const ObjectID = require('mongoose').Types.ObjectId
+var { Blogger } = require('../models/Bloggers');
 
-var { User } = require('../models/Users');
-const { path, response } = require('../server');
-
-
-
+// BLOGGER SIGNUP
 router.get('/signup', async (req, res) => {
     res.render('bloggerRegistration', {
         message: "message from backend"
     })
 })
-router.get('/home', async (req, res) => {
-    res.render('home', {
-        message: "Home Page - this message is coming from backend"
+
+// BLOGGER SIGNIN
+router.get('/login', async (req, res) => {
+    res.render('bloggerLogin', {
+        loginStatus: false,
     })
 })
 
-router.get('/link', async (req, res) => {
-    res.render('link', {
-        message: "Link Page - message from backend",
-        myName:"Ambarish"
+// SUCCESSFUl LOGIN
+router.get('/authenticate', async (req, res) => {
+    res.render('home', {
+        message: "Logged in successfully",
+        loginStatus: true,
+        username: "Ambarish"
     })
 })
+
+// HOME
+router.get('/home', async (req, res) => {
+    res.render('home', {
+        message: "Home Page",
+        loginStatus: false,
+    })
+})
+
+
+// ADD BLOG FORM
+router.post('/addBlog', async (req, res) => {
+        res.render('addBlog', {
+            message: "Add Blog Form",
+            loginStatus: true,
+            username: "Ambarish"
+        })
+})
+
+
+
 
 router.get("/getUsers", async (req, res) => {
     try {
-        User.find((err, data) => {
+        Blogger.find((err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data
@@ -54,14 +75,15 @@ router.post("/addUser", (req, res) => {
         'mobile': req.body.mobile,
     }
 
-    var user = new User(newUser)
+    var user = new Blogger(newUser)
 
     try {
         
         user.save((err, data) => {
             if (!err) {
                 res.render('bloggerRegistration', {
-                    status: "data is stored successfully"
+                    addStatus: true,
+                    addStatusMessage: "data is stored successfully"
                 })
             }
             else { res.send(err) }
@@ -74,7 +96,7 @@ router.post("/addUser", (req, res) => {
 
 router.get("/find/:id", (req,res) => {
     try {
-        User.findById(req.params.id, (err, data) => {
+        Blogger.findById(req.params.id, (err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data
@@ -97,7 +119,7 @@ router.put("/update/:id", (req,res) => {
     }
 
     try {
-        User.findByIdAndUpdate(req.params.id, { $set: updateUser }, { new: true }, (err, data) => {
+        Blogger.findByIdAndUpdate(req.params.id, { $set: updateUser }, { new: true }, (err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data
@@ -113,7 +135,7 @@ router.put("/update/:id", (req,res) => {
 
 router.delete("/remove/:id", (req,res) => {
     try {
-        User.findByIdAndRemove(req.params.id, (err, data) => {
+        Blogger.findByIdAndRemove(req.params.id, (err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data

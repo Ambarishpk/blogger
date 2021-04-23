@@ -1,0 +1,43 @@
+<div class="container p-3 mt-5">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col col-6 border shadow rounded p-5 bg-white">
+            <div class="text-center text-dark font-weight-light h3">
+                Sign In
+            </div>
+            {{#if loginStatus}}
+            <div class="alert alert-dismissible alert-success fade show" id="alertBox" role="alert">
+                <div class="text-center"><span class="font-weight-light">{{{loginStatusMessage}}}</span></div>
+                <button type="button" class="close" data-dismiss="alert" onclick="closeAlert()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{/if}}
+            {{#unless loginStatus}}
+            {{/unless}}
+            <form action="/loginUser" method="POST">
+                <div class="mb-3">
+                    <label class="col-form-label"><i class="fas fa-envelope pr-1"></i> Email:</label>
+                    <input type="number" name="email" class="form-control" id="email">
+                </div>
+                <div class="mb-4">
+                    <label class="col-form-label"><i class="fas fa-key pr-1"></i> Enter Password:</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary btn-outline-dark rounded-0" value="Login">
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+</div>
+
+
+<script>
+
+    function closeAlert() {
+        document.getElementById("alertBox").style.display = "none";
+    }
+</script>

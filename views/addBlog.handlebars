@@ -1,0 +1,76 @@
+<div class="container p-3 mt-3">
+    <form action="/publishBlog" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col col-6 border shadow rounded p-5 bg-white">
+                <div class="text-center text-dark font-weight-light h3 mb-3">
+                    Write & Publish Your Blog
+                </div>
+                {{#if addStatus}}
+                <div class="alert alert-dismissible alert-success fade show" id="alertBox" role="alert">
+                    <div class="text-center"><span class="font-weight-light">{{{addStatusMessage}}}</span></div>
+                    <button type="button" class="close" data-dismiss="alert" onclick="closeAlert()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#unless addStatus}}
+                {{/unless}}
+                <div class="mb-3 d-none">
+                    <input type="text" name="bloggerId" value="608149c308efecd80131b547" class="form-control"
+                        id="bloggerId">
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label"><i class="far fa-address-card pr-1"></i> Title of the Blog:</label>
+                    <input type="text" name="title" class="form-control" id="name">
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label"><i class="fas fa-list-ul pr-1"></i> Description</label>
+                    <textarea name="description" cols="30" rows="4" class="form-control" id="description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label"><i class="far fa-images pr-1"></i> Blog Image:</label>
+                    <div class="file-upload">
+                        <button class="file-upload-btn" type="button"
+                            onclick="$('.file-upload-input').trigger( 'click' )">Add
+                            Image</button>
+
+                        <div class="image-upload-wrap">
+                            <input class="file-upload-input" type='file' name="image" onchange="readURL(this);"
+                                accept="image/*" />
+                            <div class="drag-text">
+                                <h3>Drag and drop a file or select add Image</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image" />
+                            <div class="image-title-wrap">
+                                <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                                        class="image-title">Uploaded Image</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col col-6 border shadow rounded p-3 bg-white">
+                <div class="mb-4 mt-0 pt-0">
+                    <label class="col-form-label"><i class="fas fa-pencil-alt"></i> Blog Content</label>
+                    <textarea name="content" cols="30" rows="28" class="form-control" id="description"></textarea>
+                </div>
+                <div class="mb-3 text-center">
+                    <input type="submit" class="btn btn-primary  btn-outline-dark rounded-0"
+                        value="Click to Publish Your Blog">
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+<script>
+
+    function closeAlert() {
+        document.getElementById("alertBox").style.display = "none";
+    }
+</script>

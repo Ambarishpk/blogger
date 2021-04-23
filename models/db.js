@@ -8,4 +8,4 @@ mongoose.connect('mongodb://localhost:27017/users', { useNewUrlParser: true }, (
     else { console.log("Error : "+err) }
 })
 
-require('./Users')
+require('./Bloggers')

@@ -7,12 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Bloggers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/fileUpload.css" type="text/css">
+    <script src="js/fileUpload.js" type="text/javascript"></script>
+
+
+    <title>Blogger</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg  bg-dark">
-        <a class="navbar-brand text-white" href="#">Blogger</a>
+<body style="background-color: #F6F8FA;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand text-dark" href="#">Blogger</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,39 +27,86 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link text-white" href="/home">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item pr-3 pl-4">
+                    <a class="nav-link text-dark" href="/home"><i class="fas fa-home"></i> Home <span
+                            class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/link">Link</a>
+                <li class="nav-item pr-3">
+                    <a class="nav-link text-dark" href="/blogs"><i class="fab fa-blogger"></i> Blogs</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-list-ul"></i>
+                        Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#food"><i class="fas fa-utensils pr-2"></i> Foods</a>
+                        <a class="dropdown-item" href="#healthcare"><i class="fas fa-file-medical-alt pr-2"></i>
+                            Healthcare</a>
+                        <a class="dropdown-item" href="#sports"><i class="fas fa-football-ball pr-2"></i> Sports</a>
+                        <a class="dropdown-item" href="#fitness"><i class="fas fa-dumbbell pr-1"></i> Fitness</a>
+                        <a class="dropdown-item" href="#music"><i class="fas fa-guitar pr-2"></i> Music</a>
+                        <a class="dropdown-item" href="#travel"><i class="fas fa-route pr-2"></i> Travel</a>
+                        <a class="dropdown-item" href="#business"><i class="fas fa-hand-holding-usd pr-2"></i>
+                            Business</a>
+                        {{!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a> --}}
                     </div>
                 </li>
+                {{#if loginStatus}}
+                <li class="nav-item pl-3">
+                    <form action="/addBlog" method="POST">
+                        <div onclick="submitForm();" class="nav-link text-dark btn"><i class="fas fa-plus"></i> Add
+                            Blog</div>
+                        <input type="submit" id="submitBtn" hidden>
+                    </form>
+                </li>
+                {{/if}}
 
             </ul>
             <div class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
+                    {{#if loginStatus}}
+
                     <li class="nav-item active">
-                        <a class="nav-link text-white" href="/signup">Signup <span class="sr-only">(current)</span></a>
+                        <a class="nav-link text-dark" href="#profile"><i class="fas fa-user"></i> {{username}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Login</a>
+                        <a class="nav-link text-dark" href="/home"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </li>
+                    {{/if}}
+                    {{#unless loginStatus}}
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark" href="/signup"><i class="fas fa-user-plus"></i> Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                    {{/unless}}
                 </ul>
             </div>
         </div>
     </nav>
     {{{body}}}
+
+
+
+    <script>
+        function submitForm() {
+            document.getElementById("submitBtn").click();
+        }
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

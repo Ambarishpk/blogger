@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-var { User } = require('../models/Users');
+var { Blogger } = require('../models/Bloggers');
 
 // BLOGGER SIGNUP
 router.get('/signup', async (req, res) => {
@@ -19,8 +19,8 @@ router.get('/login', async (req, res) => {
 // SUCCESSFUl LOGIN
 router.get('/authenticate', async (req, res) => {
     res.render('home', {
-        loginStatus: true,
         message: "Logged in successfully",
+        loginStatus: true,
         username: "Ambarish"
     })
 })
@@ -34,15 +34,21 @@ router.get('/home', async (req, res) => {
 })
 
 
-router.get('/blogs', async (req, res) => {
-    res.render('blogs', {
-        blog: "Blog Page",
-    })
+// ADD BLOG FORM
+router.post('/addBlog', async (req, res) => {
+        res.render('addBlog', {
+            message: "Add Blog Form",
+            loginStatus: true,
+            username: "Ambarish"
+        })
 })
+
+
+
 
 router.get("/getUsers", async (req, res) => {
     try {
-        User.find((err, data) => {
+        Blogger.find((err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data
@@ -69,7 +75,7 @@ router.post("/addUser", (req, res) => {
         'mobile': req.body.mobile,
     }
 
-    var user = new User(newUser)
+    var user = new Blogger(newUser)
 
     try {
         
@@ -90,7 +96,7 @@ router.post("/addUser", (req, res) => {
 
 router.get("/find/:id", (req,res) => {
     try {
-        User.findById(req.params.id, (err, data) => {
+        Blogger.findById(req.params.id, (err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data
@@ -113,7 +119,7 @@ router.put("/update/:id", (req,res) => {
     }
 
     try {
-        User.findByIdAndUpdate(req.params.id, { $set: updateUser }, { new: true }, (err, data) => {
+        Blogger.findByIdAndUpdate(req.params.id, { $set: updateUser }, { new: true }, (err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data
@@ -129,7 +135,7 @@ router.put("/update/:id", (req,res) => {
 
 router.delete("/remove/:id", (req,res) => {
     try {
-        User.findByIdAndRemove(req.params.id, (err, data) => {
+        Blogger.findByIdAndRemove(req.params.id, (err, data) => {
             if (!err) {
                 res.status(200).json({
                     data: data

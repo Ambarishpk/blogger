@@ -1,0 +1,51 @@
+<div class="container p-5">
+    <div class="row">
+        <div class="col col-9 border-right pr-5">
+            {{#with blog}}
+            <div class="row mt-4">
+                <div class="col"></div>
+                <div class="col col-8">
+                    <div class="card p-2 rounded border shadow bg-white">
+                        <img src="/uploads/{{image}}">
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col col-12 text-center">
+                    <div class="h2 text-dark">{{title}}</div>
+                    <div class="p text-dark font-weight-light">{{description}}</div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col col-12 text-left p-3 border">
+                    <h6 class="font-weight-normal text-dark" style="line-height: 1.8rem;">{{content}}</h6>
+                </div>
+            </div>
+            {{/with}}
+        </div>
+        <div class="col border-left">
+            <div class="row mt-4 mb-3">
+                <div class="col text-center">
+                    <h5 class="font-weight-light">Blogs Category</h5>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col h5 font-weight-light text-info text-center"><a href="#">Foods</a></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col h5 font-weight-light text-info text-center"><a href="#">Fashion & Designing</a></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col h5 font-weight-light text-info text-center"><a href="#">Travel</a></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col h5 font-weight-light text-info text-center"><a href="#">Music</a></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col h5 font-weight-light text-info text-center"><a href="#">Business</a></div>
+            </div>
+
+        </div>
+    </div>
+</div>

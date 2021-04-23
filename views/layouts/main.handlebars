@@ -9,13 +9,16 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/fileUpload.css" type="text/css">
+    <script src="js/fileUpload.js" type="text/javascript"></script>
 
 
     <title>Blogger</title>
 </head>
 
 <body style="background-color: #F6F8FA;">
-    <nav class="navbar navbar-expand-lg navbar-light p-4 bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand text-dark" href="#">Blogger</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +55,11 @@
                 </li>
                 {{#if loginStatus}}
                 <li class="nav-item pl-3">
-                    <a class="nav-link text-dark" href="#addBlog"><i class="fas fa-plus"></i> Add Blog</a>
+                    <form action="/addBlog" method="POST">
+                        <div onclick="submitForm();" class="nav-link text-dark btn"><i class="fas fa-plus"></i> Add
+                            Blog</div>
+                        <input type="submit" id="submitBtn" hidden>
+                    </form>
                 </li>
                 {{/if}}
 
@@ -83,6 +90,12 @@
     {{{body}}}
 
 
+
+    <script>
+        function submitForm() {
+            document.getElementById("submitBtn").click();
+        }
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

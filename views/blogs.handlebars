@@ -1,42 +1,30 @@
-<div class="container mt-3 p-3">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row mt-0 pt-0">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="nature.jpg" class="d-block w-100" alt="...">
+                <img src="images/bloglogo.jpg" class="d-block w-100" style="height:20rem" alt="...">
             </div>
         </div>
     </div>
+</div>
+<div class="container mt-5 mb-5 p-3">
     <div class="row ">
-        <div class="col mb-0">
-            <div class="card">
-                <img src="nature1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Recycling is must</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+
+        {{#each blog}}
+
+        <div class="col col-4 mb-3" style="cursor:pointer;">
+            <a href="/blog/{{_id}}" class="text-dark" style="text-decoration: none;">
+                <div class="card">
+                    <img src="/uploads/{{image}}" class="card-img-top" alt="..">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{description}}</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="col">
-            <div class="card">
-                <img src="nature2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Save Forest</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img src="nature3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Save Water</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-        </div>
+
+        {{/each}}
 
     </div>
 </div>
